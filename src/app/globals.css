@@ -20,5 +20,21 @@ body {
 }
 
 .fundo {
-  background-color: #151718;
+  background-color: #151718 !important;
+  width: 100%;
+  height: calc(100vh - 50px);;
+}
+
+.corpo {
+  background-color: #151718 !important;
+  width: 100%;
+  height: 100%
+}
+
+.navbar-especial {
+  background-color: #151718 !important;
+  width: 100%;
+  height: 50px;
+  color: white;
+  padding: 10px;
 }
