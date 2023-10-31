@@ -2,6 +2,7 @@
   "name": "front-oasis-typescript",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +13,8 @@
     "bootstrap": "^5.3.2",
     "next": "14.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
