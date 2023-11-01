@@ -1,22 +1,34 @@
 'use client'
 import Link from "next/link"
 import YouTube from 'react-youtube';
+// import cors from '../../pages/api/cors';
 
 export default async function video({ params }: {
     params: { myId: string}
 }) {
     // const [videoId, setVideoId] = useState('');
 
-    const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IkNhc3RybyIsImV4cCI6MTY5ODgwMDUzMiwiY29tcGFueSI6Mn0.uTWsUuGEQGYFaL8MqrFdmFmoIIC36mxUyWqXklbpoN4"
-    let nome;
-    const data = await fetch("http://localhost:8080/video/2", {
-        headers: {
-            Authorization:`Bearer ${accessToken}`
+    let data
+    const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IkNhc3RybyIsImV4cCI6MTY5ODgxMTE3NSwiY29tcGFueSI6Mn0.wjFfeLN-vt05CTsokV74iHdZJ14t0Y85WIIlPy3Ad18"
+    try {
+        const response = await fetch("http://localhost:8080/video/2", {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+    
+        if (!response.ok) {
+            throw new Error(`Erro ao fazer a requisição: ${response.statusText}`);
         }
-    }).then((data) => {
-    nome = data;
-    });
-    console.log('nome', nome)
+    
+         data = await response.json();
+        console.log('Dados recebidos:', data);
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+
+    console.log('nome', data)
     // const video = data.json()
     
 
