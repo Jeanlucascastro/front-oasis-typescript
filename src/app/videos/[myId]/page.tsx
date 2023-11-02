@@ -7,119 +7,57 @@ import YouTube from 'react-youtube';
 import { getData } from "../../../app/pages/api/cors";
 
 function video({ params }: {
-        params: { myId: string,}
-    }) {
-  const [data, setData] = useState(null);
+    params: { myId: string, }
+}) {
+    const [data, setData] = useState(null);
 
-  const [nomeAula, setNomeAula] = useState('');
+    const [nomeAula, setNomeAula] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const url = "/api/video/2";
-      const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IkNhc3RybyIsImV4cCI6MTY5ODg5Nzg2NSwiY29tcGFueSI6Mn0.FQrZ7OMfr6AzP4lfttWAeP15xdiXFxvabHImXBuvR8M";
+    useEffect(() => {
+        const fetchData = async () => {
+            const url = "/api/video/2";
+            const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6IkNhc3RybyIsImV4cCI6MTY5ODk0Nzg5NiwiY29tcGFueSI6Mn0.zhKcwzwMx1gp8lUy5aC0rubJwgkrHNy1u9TLDWbchu0";
 
-      try {
-        const response = await axios.get(url, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            
-          }
-        });
-        setData(response.data);
-        console.log('response.data', response.data)
-        setNomeAula(response.data.name)
-      } catch (error) {
-        console.error(error);
-      }
-    };
+            try {
+                const response = await axios.get(url, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
 
-    fetchData();
-  }, []);
+                    }
+                });
+                setData(response.data);
+                console.log('response.data', response.data)
+                setNomeAula(response.data.name)
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, []);
     const videoId = 'b8JX94mkwio'
 
-        const opts = {
+    const opts = {
         height: '620',
-        width: '1150', 
-      };
+        width: '1150',
+    };
 
 
-  return (
-            <><h1>Aula - {params.myId} - { nomeAula } </h1><ul>
+    return (
+        <><h1>Aula - {params.myId} - {nomeAula} </h1><ul>
             <li><Link href={"/"}>Voltar</Link></li>
         </ul>
-        <div className="video-place">
-        <YouTube videoId={videoId} opts={opts}/>
-        </div>
+            <div className="content">
+                <div className="video-place">
+                    <YouTube className="video" videoId={videoId} opts={{ ...opts, width: '100%', height: '100%' }} />
+                </div>
+                <div className="note-area">
+                    <span className="titulo-nota"> Anotações da aula: </span>
+                    <textarea className="note" placeholder="Digite uma anotação para aula..."></textarea>
+                </div>
+            </div>
         </>
-  );
+    );
 }
 
 export default video;
-
-
-
-
-
-
-
-
-
-
-// 'use client'
-
-// export async function getServerSideProps() {
-//   const url = "http://192.168.0.104:8080/video/2";
-//   const accessToken = "seu_token_aqui";
-
-//   try {
-//     const response = await axios.get(url, {
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`
-//       }
-//     });
-//     const data = response.data;
-
-//     return {
-//       props: {
-//         data
-//       }
-//     };
-//   } catch (error) {
-//     console.error(error);
-//     return {
-//       props: {
-//         data: null // ou algum valor padrão em caso de erro
-//       }
-//     };
-//   }
-// }
-
-
-// export default async function video({ params }: {
-//     params: { myId: string,}
-// }) {
-
-
-//     const data = await getData()
-
-//     console.log('nome', data)
-
-
-//     const videoId = 'b8JX94mkwio'
-
-//     const opts = {
-//         height: '620',
-//         width: '1150', 
-//       };
-
-
-//     return(
-//         <><h1>Aula - {params.myId} </h1><ul>
-//             <li><Link href={"/"}>Voltar</Link></li>
-//         </ul>
-//         <div className="video-place">
-//         {/* <YouTube videoId={videoId} opts={opts}/> */}
-//         </div>
-//         </>
-//     )
-// }
