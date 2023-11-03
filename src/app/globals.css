@@ -40,15 +40,22 @@ body {
   padding: 12px;
   font-size: 25px;
   margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
 }
 
 .video-place {
-  width: 1160px;
+  /* width: 1160px;
   height: 630px;
   border: 1px solid white;
   border-color: white;
   border-radius: 17px;
-  padding: 12px;
+  padding: 12px; */
+  width: 1160px;
+  height: 639px;
+  border: 6px solid white;
+  border-color: #151718;
+  border-radius: 17px;
 }
 
 .video {
@@ -57,28 +64,27 @@ body {
 
 .content {
   display: flex;
-  gap: 10px;
+  gap: 45px;
   padding: 10px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .note-area {
-  /* background-color: #26251C; */
   background-color: #391A03;
   border: 1px solid white;
   border-radius: 14px;
-  /* padding: 7px; */
   padding: 18px;
-  height: 630px;
+  height: 628px;
   display: flex;
   flex-direction: column;
+  width: 438px;
+  margin-top: 4px;
 }
 
 .note {
   height: 605px;
   width: 400px;
-  /* background-color: #26251C; */
   background-color: #391A03;
   resize: none;
   outline: none;
@@ -88,4 +94,8 @@ body {
 .titulo-nota {
   margin-bottom: 10px;
   color: #FF802B;
+}
+
+.titulo-aula {
+  font-size: 24px;
 }
