@@ -9,10 +9,7 @@ import { getData } from "../../../app/pages/api/cors";
 function video({ params }: {
     params: { myId: string, }
 }) {
-    const [data, setData] = useState(null);
-
-    const [nomeAula, setNomeAula] = useState('');
-    const [idVideo, setIdVideo] = useState('');
+Z
 
 
     useEffect(() => {
